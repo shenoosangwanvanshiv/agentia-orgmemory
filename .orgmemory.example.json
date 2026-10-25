@@ -1,0 +1,11 @@
+{
+  "storeDir": ".orgmemory",
+  "baseRef": "main",
+  "minEvidence": 2,
+  "mediumThreshold": 0.35,
+  "highThreshold": 0.6,
+  "aiAgent": "release",
+  "copado": {
+    "workList": ["cicd", "work", "list", "--page-size", "200", "--json"]
+  }
+}

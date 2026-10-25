@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discount_Tier_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(Discount_Tier__c)), Amount &lt; 1000)</errorConditionFormula>
+    <errorMessage>A discount tier needs an opportunity amount of at least 1000.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,805 @@
+[
+  {
+    "id": "US-0000001",
+    "title": "Add Region field to Account",
+    "date": "2025-11-03T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Account.Region__c"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "permission",
+    "failureMessage": "Field not visible to Sales profile; users saw blank values",
+    "fix": "Added a PermissionSet with field-level security in the same story"
+  },
+  {
+    "id": "US-0000002",
+    "title": "Account layout cleanup",
+    "date": "2025-11-09T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Layout",
+        "name": "Account-Account Layout"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000003",
+    "title": "Opportunity discount validation",
+    "date": "2025-11-16T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ValidationRule",
+        "name": "Opportunity.Discount_Max_Check"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "INT",
+    "failureCategory": "validation-rule",
+    "failureMessage": "Integration user bulk load blocked by validation rule",
+    "fix": "Bypassed the rule for the integration user with a custom permission"
+  },
+  {
+    "id": "US-0000004",
+    "title": "Pricing service refactor",
+    "date": "2025-11-22T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "OpportunityPricingService"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "PROD",
+    "failureCategory": "coverage",
+    "failureMessage": "Average test coverage 61%, below the 75% gate",
+    "fix": "Added OpportunityPricingServiceTest before promoting"
+  },
+  {
+    "id": "US-0000005",
+    "title": "Lead assignment flow update",
+    "date": "2025-11-28T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Flow",
+        "name": "Lead_Assignment"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000006",
+    "title": "Add Tier field and flow",
+    "date": "2025-12-05T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Account.Tier__c"
+      },
+      {
+        "type": "Flow",
+        "name": "Account_Tier_Update"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "flow-conflict",
+    "failureMessage": "Record-triggered flow conflicts with Account_Update_Flow",
+    "fix": "Merged the logic into a single flow and deactivated the old version"
+  },
+  {
+    "id": "US-0000007",
+    "title": "Case status badge",
+    "date": "2025-12-11T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "caseStatusBadge"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000008",
+    "title": "Account trigger bulk fix",
+    "date": "2025-12-18T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexTrigger",
+        "name": "AccountTrigger"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandler"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandlerTest"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "test-failure",
+    "failureMessage": "Bulk insert test hit too many SOQL queries",
+    "fix": "Moved the query outside the loop",
+    "failedTests": [
+      "AccountTriggerHandlerTest.testBulkInsert"
+    ]
+  },
+  {
+    "id": "US-0000009",
+    "title": "Sales pipeline report",
+    "date": "2025-12-24T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Report",
+        "name": "Sales_Pipeline_Report"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000010",
+    "title": "Opportunity stage rule",
+    "date": "2025-12-30T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ValidationRule",
+        "name": "Opportunity.Stage_Required_Fields"
+      },
+      {
+        "type": "CustomField",
+        "name": "Opportunity.Close_Reason__c"
+      },
+      {
+        "type": "PermissionSet",
+        "name": "Sales_Field_Access"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "INT",
+    "failureCategory": "integration-break",
+    "failureMessage": "Integration user could not close opportunities",
+    "fix": "Bypassed the rule for the integration user with a custom permission"
+  },
+  {
+    "id": "US-0000011",
+    "title": "Contact preferred channel field",
+    "date": "2026-01-06T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Contact.Preferred_Channel__c"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "permission",
+    "failureMessage": "Field not editable for Support profile",
+    "fix": "Added a PermissionSet with field-level security in the same story"
+  },
+  {
+    "id": "US-0000012",
+    "title": "Tax rate custom metadata",
+    "date": "2026-01-12T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomMetadata",
+        "name": "Tax_Rate.US"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000013",
+    "title": "Quote service",
+    "date": "2026-01-19T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "QuoteService"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "PROD",
+    "failureCategory": "coverage",
+    "failureMessage": "Coverage 58% on QuoteService",
+    "fix": "Added QuoteServiceTest before promoting"
+  },
+  {
+    "id": "US-0000014",
+    "title": "Opportunity page layout",
+    "date": "2026-01-25T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Layout",
+        "name": "Opportunity-Opportunity Layout"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000015",
+    "title": "Account trigger recursion",
+    "date": "2026-01-31T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexTrigger",
+        "name": "AccountTrigger"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandler"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "test-failure",
+    "failureMessage": "Recursive update caused a limit exception",
+    "fix": "Added a static recursion guard",
+    "failedTests": [
+      "AccountTriggerHandlerTest.testBulkInsert",
+      "AccountTriggerHandlerTest.testRecursion"
+    ]
+  },
+  {
+    "id": "US-0000016",
+    "title": "Case escalation flow",
+    "date": "2026-02-07T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Flow",
+        "name": "Case_Escalation"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000017",
+    "title": "Order total field",
+    "date": "2026-02-13T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Order.Total_Amount__c"
+      },
+      {
+        "type": "PermissionSet",
+        "name": "Order_Field_Access"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000018",
+    "title": "Opportunity discount flow",
+    "date": "2026-02-20T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Opportunity.Discount_Pct__c"
+      },
+      {
+        "type": "Flow",
+        "name": "Opportunity_Discount_Flow"
+      },
+      {
+        "type": "PermissionSet",
+        "name": "Sales_Field_Access"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "flow-conflict",
+    "failureMessage": "Two active flows update Opportunity.Amount",
+    "fix": "Merged the logic into a single flow and deactivated the old version"
+  },
+  {
+    "id": "US-0000019",
+    "title": "Lead score card",
+    "date": "2026-02-26T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "leadScoreCard"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000020",
+    "title": "Opportunity region rule",
+    "date": "2026-03-04T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ValidationRule",
+        "name": "Opportunity.Region_Required"
+      },
+      {
+        "type": "CustomField",
+        "name": "Opportunity.Region__c"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "validation-rule",
+    "failureMessage": "Data loader job failed on the required region",
+    "fix": "Bypassed the rule for the integration user with a custom permission"
+  },
+  {
+    "id": "US-0000021",
+    "title": "Contact page layout",
+    "date": "2026-03-11T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Layout",
+        "name": "Contact-Contact Layout"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000022",
+    "title": "Pricing helper",
+    "date": "2026-03-17T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "PricingHelper"
+      },
+      {
+        "type": "ApexClass",
+        "name": "PricingHelperTest"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000023",
+    "title": "Task auto-assign flow",
+    "date": "2026-03-24T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Flow",
+        "name": "Task_Auto_Assign"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000024",
+    "title": "Account segment field",
+    "date": "2026-03-30T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Account.Parent_Segment__c"
+      },
+      {
+        "type": "Flow",
+        "name": "Account_Update_Flow"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "flow-conflict",
+    "failureMessage": "Field update loop between two flows",
+    "fix": "Merged the logic into a single flow and deactivated the old version"
+  },
+  {
+    "id": "US-0000025",
+    "title": "Service backlog report",
+    "date": "2026-04-05T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Report",
+        "name": "Service_Backlog"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000026",
+    "title": "Billing service",
+    "date": "2026-04-12T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "BillingService"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "PROD",
+    "failureCategory": "coverage",
+    "failureMessage": "Coverage 63% on BillingService",
+    "fix": "Added BillingServiceTest before promoting"
+  },
+  {
+    "id": "US-0000027",
+    "title": "Opportunity trigger",
+    "date": "2026-04-18T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexTrigger",
+        "name": "OpportunityTrigger"
+      },
+      {
+        "type": "ApexClass",
+        "name": "OpportunityTriggerHandler"
+      },
+      {
+        "type": "ApexClass",
+        "name": "OpportunityTriggerHandlerTest"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000028",
+    "title": "Case root cause field",
+    "date": "2026-04-25T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Case.Root_Cause__c"
+      },
+      {
+        "type": "PermissionSet",
+        "name": "Support_Field_Access"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000029",
+    "title": "Contact timeline",
+    "date": "2026-05-01T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "contactTimeline"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000030",
+    "title": "Account code field",
+    "date": "2026-05-07T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Account.Account_Code__c"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000031",
+    "title": "Close date rule",
+    "date": "2026-05-14T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ValidationRule",
+        "name": "Opportunity.Close_Date_Future"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "PROD",
+    "failureCategory": "integration-break",
+    "failureMessage": "Nightly ERP sync failed on past close dates",
+    "fix": "Bypassed the rule for the integration user with a custom permission",
+    "incident": "ERP sync paused for 3 hours in production"
+  },
+  {
+    "id": "US-0000032",
+    "title": "Lead source detail field",
+    "date": "2026-05-20T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Lead.Source_Detail__c"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "permission",
+    "failureMessage": "Marketing profile could not see the field",
+    "fix": "Added a PermissionSet with field-level security in the same story"
+  },
+  {
+    "id": "US-0000033",
+    "title": "String utilities",
+    "date": "2026-05-27T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "StringUtils"
+      },
+      {
+        "type": "ApexClass",
+        "name": "StringUtilsTest"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000034",
+    "title": "Product catalog",
+    "date": "2026-06-02T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "productCatalog"
+      },
+      {
+        "type": "LightningComponentBundle",
+        "name": "productCard"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000035",
+    "title": "Account update flow tweak",
+    "date": "2026-06-08T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Flow",
+        "name": "Account_Update_Flow"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000036",
+    "title": "Opportunity net amount field",
+    "date": "2026-06-15T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomField",
+        "name": "Opportunity.Net_Amount__c"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "permission",
+    "failureMessage": "Sales Ops could not edit the field",
+    "fix": "Added a PermissionSet with field-level security in the same story"
+  },
+  {
+    "id": "US-0000037",
+    "title": "Re-release close date rule with bypass",
+    "date": "2026-06-21T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ValidationRule",
+        "name": "Opportunity.Close_Date_Future"
+      }
+    ],
+    "outcome": "rolled_back",
+    "environment": "PROD",
+    "failureCategory": "integration-break",
+    "failureMessage": "Rule rolled back after the ERP sync failed again",
+    "fix": "Reverted the rule and re-released it with an integration bypass"
+  },
+  {
+    "id": "US-0000038",
+    "title": "Case aging report",
+    "date": "2026-06-28T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Report",
+        "name": "Case_Aging"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000039",
+    "title": "Account trigger new field logic",
+    "date": "2026-07-04T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexTrigger",
+        "name": "AccountTrigger"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandler"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandlerTest"
+      },
+      {
+        "type": "CustomField",
+        "name": "Account.Region__c"
+      },
+      {
+        "type": "PermissionSet",
+        "name": "Sales_Field_Access"
+      }
+    ],
+    "outcome": "failed",
+    "environment": "UAT",
+    "failureCategory": "test-failure",
+    "failureMessage": "Handler test failed on null region",
+    "fix": "Added a null check",
+    "failedTests": [
+      "AccountTriggerHandlerTest.testBulkInsert"
+    ]
+  },
+  {
+    "id": "US-0000040",
+    "title": "Account trigger tidy",
+    "date": "2026-07-10T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexTrigger",
+        "name": "AccountTrigger"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandler"
+      },
+      {
+        "type": "ApexClass",
+        "name": "AccountTriggerHandlerTest"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000041",
+    "title": "Account summary card",
+    "date": "2026-07-17T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "accountSummary"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000042",
+    "title": "Win/loss report",
+    "date": "2026-07-23T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Report",
+        "name": "Win_Loss"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000043",
+    "title": "Lead page layout",
+    "date": "2026-07-30T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Layout",
+        "name": "Lead-Lead Layout"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000044",
+    "title": "Discount feature flag",
+    "date": "2026-08-05T13:48:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "CustomMetadata",
+        "name": "Feature_Flag.Discounts"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000045",
+    "title": "Case auto-close flow",
+    "date": "2026-08-11T23:24:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "Flow",
+        "name": "Case_Auto_Close"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000046",
+    "title": "Opportunity kanban",
+    "date": "2026-08-18T09:00:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "LightningComponentBundle",
+        "name": "opportunityKanban"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000047",
+    "title": "Date utilities",
+    "date": "2026-08-24T18:36:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "ApexClass",
+        "name": "DateUtils"
+      },
+      {
+        "type": "ApexClass",
+        "name": "DateUtilsTest"
+      }
+    ],
+    "outcome": "success"
+  },
+  {
+    "id": "US-0000048",
+    "title": "Sales field access update",
+    "date": "2026-08-31T04:12:00.000Z",
+    "source": "seed",
+    "components": [
+      {
+        "type": "PermissionSet",
+        "name": "Sales_Field_Access"
+      }
+    ],
+    "outcome": "success"
+  }
+]

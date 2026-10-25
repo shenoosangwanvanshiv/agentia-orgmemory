@@ -1,0 +1,30 @@
+{
+  "name": "agentia-plugin-orgmemory",
+  "version": "0.1.0",
+  "description": "Org Memory for Copado Agentia: learn from Salesforce DevOps history, predict deployment risk, recommend actions, and learn again from real outcomes.",
+  "license": "MIT",
+  "files": ["dist", "bin", "demo", "SKILL.md", ".orgmemory.example.json"],
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rm -rf dist",
+    "test": "npm run build && node --test \"dist/__tests__/*.test.js\""
+  },
+  "dependencies": {
+    "@oclif/core": "^4.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3"
+  },
+  "oclif": {
+    "bin": "agentia",
+    "dirname": "agentia",
+    "commands": "./dist/commands",
+    "topicSeparator": " ",
+    "topics": {
+      "orgmemory": {
+        "description": "Organizational memory for Salesforce DevOps: learn from past changes, predict risk, recommend actions"
+      }
+    }
+  }
+}
